@@ -9,7 +9,7 @@ Impalad		32		4	with assumption (1 process hold 8 GB of RAM)
 CM Agent	1		1
 No HBASE and Solr
 
-avaialable resource per node will be 11 vCores, Ram 87040 Bytes for (yarn.nodemanager.resource) configuration
+Note : avaialable resource per node will be 11 vCores, Ram 87040 Bytes for (yarn.nodemanager.resource) configuration
 
 3. allow minimum allocation for yarn scheduler
 with minimum 1 core, 1024 Bytes and maximum <=avalable vcore(11) and 11264 Bytes for memory allocation. I will not allow one container to consume most of available memory.
