@@ -1,6 +1,9 @@
 
 result dump screen from editted script
 
+fastest configuration is Maps=1, reduce=1, memory=512
+slowest configuration is Maps=4, reduce=4, memory=512
+
 ```
 [sitysat@ip-172-31-7-44 ~]$ ./YARNtest.sh
 Testing loop started on Tue Dec 6 04:38:21 EST 2016
