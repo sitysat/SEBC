@@ -1,5 +1,5 @@
-##########################
-0. add disk
+#0. add disk
+```
 sudo fdisk /dev/xvdb
 sudo mkfs.ext4 /dev/xvdb1
 sudo mkfs.ext4 /dev/xvdb2
@@ -21,8 +21,10 @@ tmpfs            7648804       0   7648804   0% /dev/shm
 none                   0       0         0    - /proc/sys/fs/binfmt_misc
 /dev/xvdb1      11775668   29544  11141280   1% /opt
 /dev/xvdb2      18923424   44992  17910516   1% /data
+```
 
 show mount 
+```
 mount -v
 [ec2-user@ip-172-31-7-44 /]$ sudo mount -v
 /dev/xvda1 on / type ext4 (rw)
@@ -127,8 +129,9 @@ Journal inode:            8
 Default directory hash:   half_md4
 Directory Hash Seed:      028cc135-0c6e-465b-92a0-be4d14e1a9d1
 Journal backup:           inode blocks
-
-# reset reserve blockcount to 0
+```
+reset reserve blockcount to 0
+```
 sudo tune2fs -m0 /dev/xvdb1
 
  sudo tune2fs -l /dev/xvdb1
@@ -147,79 +150,85 @@ Filesystem OS type:       Linux
 Inode count:              757392
 Block count:              3024228
 Reserved block count:     0
+```
 
-############################
-1. edit /etc/hosts
+#1. edit /etc/hosts
+```
 172.31.7.44 sit_cm
 172.31.7.45 sit_d1
 172.31.7.43 sit_d2
 172.31.7.46 sit_d3
 172.31.7.42 sit_rm
-############################
-2. edit /etc/ssh/sshd_config
+```
+#2. edit /etc/ssh/sshd_config
 PermitRootLogin yes
 PasswordAuthentication yes
 2.1 create root passwd
 sudo passwd root
 2.1 restart sshd service
 sudo service sshd restart
-############################
-3. setup jdk
+
+#3. setup jdk
 sudo yum install jdk-7u75-linux-x64.rpm
-############################
-4. setup mysql connector
+
+#4. setup mysql connector
 sudo yum install mysql-connector-java
-############################
-5. set vm.swappiness
+
+#5. set vm.swappiness
 sudo sysctl vm.swappiness=1
 sudo vi /etc/sysctl.conf 
 vm.swappiness=1
-############################
-6. disable hugepage and add to /etc/rc.local
+
+#6. disable hugepage and add to /etc/rc.local
 echo never > /sys/kernel/mm/redhat_transparent_hugepage/defrag
 
 [ec2-user@ip-172-31-7-42 ~]$ sudo cat /sys/kernel/mm/transparent_hugepage/defrag
 always madvise [never]
 
-############################
-7.
-(to disable add the following to /etc/sysctl.conf) 
-#disable ipv6 
+#7. (to disable add the following to /etc/sysctl.conf) 
+
+disable ipv6 
+```
 net.ipv6.conf.all.disable_ipv6 = 1
 net.ipv6.conf.default.disable_ipv6 = 1
 net.ipv6.conf.lo.disable_ipv6 = 1  
-
-# adding below setting in /etc/sysconfig/network
+```
+adding below setting in /etc/sysconfig/network
+```
 NETWORKING_IPV6=no
 NOZEROCONF=yes
 IPV6INIT=no
-############################
-8.Show forward and reverse host lookups using getent and nslookup
+```
 
+#8.Show forward and reverse host lookups using getent and nslookup
+```
 [root@ip-172-31-7-44 ~]# getent hosts ip-172-31-7-44.ap-southeast-1.compute.internal
 172.31.7.44     ip-172-31-7-44.ap-southeast-1.compute.internal
+```
 
-
+```
 [root@ip-172-31-7-44 ~]# nslookup 172.31.7.44
 Server:         172.31.0.2
 Address:        172.31.0.2#53
-
+```
 Non-authoritative answer:
+```
 44.7.31.172.in-addr.arpa        name = ip-172-31-7-44.ap-southeast-1.compute.internal.
-
+```
 Authoritative answers can be found from:
 
-############################
-start nscd
+#start nscd
+```
 sudo yum install nscd
 sudo service nscd start && chkconfig nscd on
 
 ps -ef | grep nscd
 nscd     26081     1  0 05:21 ?        00:00:00 /usr/sbin/nscd
-
+```
 start ntpd
+```
 service ntpd start
-
+```
 ##########################
 disabled selinux
 edit /etc/selinux/config

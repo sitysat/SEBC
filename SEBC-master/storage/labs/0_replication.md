@@ -1,12 +1,14 @@
-1. replication using BDR
+#1. replication using BDR
 from WinZerZ_source to WinZerZ_replicate
+```
 [root@ip-172-31-7-45 ~]# hadoop fs -ls /tmp/WinZerZ_replicate/WinZerZ_source
 Found 2 items
 -rw-r--r--   3 root supergroup          0 2016-12-05 21:15 /tmp/WinZerZ_replicate/WinZerZ_source/_SUCCESS
 -rw-r--r--   3 root supergroup  500000000 2016-12-05 21:15 /tmp/WinZerZ_replicate/WinZerZ_source/part-m-00000
+```
 
-FSCK check replication
-##########################################################
+#FSCK check replication
+```
 [root@ip-172-31-7-44 cloudera-scm-server]# hdfs fsck /tmp/WinZerZ_replicate/WinZerZ_source -files -blocks
 Connecting to namenode via http://ip-172-31-7-44.ap-southeast-1.compute.internal:50070
 FSCK started by root (auth:SIMPLE) from /172.31.7.44 for path /tmp/WinZerZ_replicate/WinZerZ_source at Mon Dec 05 21:47:08 EST 2016
@@ -39,9 +41,9 @@ FSCK ended at Mon Dec 05 21:47:08 EST 2016 in 2 milliseconds
 
 
 The filesystem under path '/tmp/WinZerZ_replicate/WinZerZ_source' is HEALTHY
-
-##########################################################
-
+```
+status from other machine
+```
 [root@ip-172-31-13-24 ~]# hdfs fsck /tmp/WinZerZ_source -files -blocks
 Connecting to namenode via http://ip-172-31-13-24.ap-southeast-1.compute.internal:50070
 FSCK started by root (auth:SIMPLE) from /172.31.13.24 for path /tmp/WinZerZ_source at Mon Dec 05 21:44:40 EST 2016
@@ -74,3 +76,4 @@ FSCK ended at Mon Dec 05 21:44:40 EST 2016 in 2 milliseconds
 
 
 The filesystem under path '/tmp/WinZerZ_source' is HEALTHY
+```
