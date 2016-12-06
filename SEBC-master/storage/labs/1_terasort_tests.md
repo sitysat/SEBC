@@ -1,9 +1,12 @@
-1. create user sitysat and create home directory for sitysat user
+#1. create user sitysat and create home directory for sitysat user
+```
 [root@ip-172-31-7-46 ~]# sudo -u sitysat hadoop fs -ls /user/sitysat/
 Found 1 items
 drwxr-xr-x   - sitysat supergroup          0 2016-12-05 22:10 /user/sitysat/teragen_output
+```
 
-2. run teragen under sitysat user
+#2. run teragen under sitysat user
+```
 [root@ip-172-31-7-44 cloudera-scm-server]# sudo -u sitysat time hadoop jar /opt/cloudera/parcels/CDH/jars/hadoop-example.jar teragen -Dmapreduce.job.maps=4 -Ddfs.blocksize=33554432 100000000 teragen_output
 Not a valid JAR: /opt/cloudera/parcels/CDH-5.8.2-1.cdh5.8.2.p0.3/jars/hadoop-example.jar
 0.20user 0.03system 0:00.17elapsed 134%CPU (0avgtext+0avgdata 27744maxresident)k
@@ -186,13 +189,16 @@ bin/     etc/     include/ jars/    lib/     lib64/   libexec/ meta/    share/
 real    3m3.314s
 user    1m56.293s
 sys     0m7.337s
+```
 
 result file
+```
 [root@ip-172-31-7-46 ~]# -rw-r--r--   3 sitysat supergroup           0 2016-12-05 22:13 /user/sitysat/teragen_output/_SUCCESS
 [root@ip-172-31-7-46 ~]# -rw-r--r--   3 sitysat supergroup       9.3 G 2016-12-05 22:13 /user/sitysat/teragen_output/part-m-00000
+```
 
-#################################################33
-2. Terasort command
+#2. Terasort command
+```
 time hadoop jar /opt/cloudera/parcels/CDH/jars/hadoop-examples.jar terasort teragen_output terasort_output
 
 
@@ -248,4 +254,4 @@ time hadoop jar /opt/cloudera/parcels/CDH/jars/hadoop-examples.jar terasort tera
 real    2m19.671s
 user    2m24.245s
 sys     0m14.360s
-
+```
