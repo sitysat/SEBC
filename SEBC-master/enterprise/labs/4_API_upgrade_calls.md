@@ -2,13 +2,13 @@ Use the API on the command line to:
 
 #Report the latest available version of the API
 ```
-curl 'http://ec2-54-169-199-183.ap-southeast-1.compute.amazonaws.com:7180/api/version'
+curl -u cm:cloudera 'http://ec2-54-169-199-183.ap-southeast-1.compute.amazonaws.com:7180/api/version'
 v14
 ```
 
 #Report the CM version
 ```
-curl 'http://ec2-54-169-199-183.ap-southeast-1.compute.amazonaws.com:7180/api/version'
+curl -u cm:cloudera 'http://ec2-54-169-199-183.ap-southeast-1.compute.amazonaws.com:7180/api/version'
 {
   "version" : "5.9.0",
   "buildUser" : "jenkins",
