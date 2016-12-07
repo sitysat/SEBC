@@ -1,6 +1,6 @@
 use curl on the endpoint ./api/v2/cm/deployment
 
-'''
+```
 [root@ip-172-31-7-44 ~]# curl -u cm:cloudera 'http://localhost:7180/api/v2/cm/deployment'
 
 {
@@ -910,4 +910,4 @@ use curl on the endpoint ./api/v2/cm/deployment
     } ]
   }
 }
-'''
+```
