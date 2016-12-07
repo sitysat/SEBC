@@ -1,42 +1,6 @@
 use curl on the endpoint ./api/v2/cm/deployment
 
 '''
-[root@ip-172-31-7-44 ~]# curl http://ip-172-31-7-44.ap-southeast-1.compute.internal:7180/api/v2/cm/deployment
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
-<title>Error 401 Full authentication is required to access this resource</title>
-</head>
-<body><h2>HTTP ERROR 401</h2>
-<p>Problem accessing /api/v2/cm/deployment. Reason:
-<pre>    Full authentication is required to access this resource</pre></p><hr /><i><small>Powered by Jetty://</small></i><br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-
-</body>
-</html>
-[root@ip-172-31-7-44 ~]# ^C
-[root@ip-172-31-7-44 ~]#
-[root@ip-172-31-7-44 ~]# curl -u cm:cloudera 'http://localhost:7180/api/v2/cm/deployment
-> '
-curl: (3) Illegal characters found in URL
 [root@ip-172-31-7-44 ~]# curl -u cm:cloudera 'http://localhost:7180/api/v2/cm/deployment'
 {
   "timestamp" : "2016-12-07T02:51:28.555Z",
