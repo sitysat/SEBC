@@ -91,6 +91,14 @@ INFO  : OK
 
 Login to beeline as the principal for raffles
 ```
+[raffles@ip-172-31-3-218 krb5kdc]$ beeline
+2016-12-08 23:13:08,080 WARN  [main] mapreduce.TableMapReduceUtil: The hbase-prefix-tree module jar containing PrefixTreeCodec is not present.  Continuing without it.
+beeline> !connect jdbc:hive2://172.31.3.217:10000/default;principal=hive/ip-172-31-3-217.ap-southeast-1.compute.internal@SITYSAT.SG
+scan complete in 2ms
+Connecting to jdbc:hive2://172.31.3.217:10000/default;principal=hive/ip-172-31-3-217.ap-southeast-1.compute.internal@SITYSAT.SG
+Connected to: Apache Hive (version 1.1.0-cdh5.9.0)
+Driver: Hive JDBC (version 1.1.0-cdh5.9.0)
+Transaction isolation: TRANSACTION_REPEATABLE_READ
 0: jdbc:hive2://172.31.3.217:10000/default> SHOW TABLES;
 INFO  : Compiling command(queryId=hive_20161208225353_a00ff243-a125-409c-897b-f293e83b807a): SHOW TABLES
 INFO  : Semantic Analysis Completed
